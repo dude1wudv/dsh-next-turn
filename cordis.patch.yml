@@ -1,0 +1,31 @@
+# ============================================================================
+# dsh-next-turn — bundle patch
+# ============================================================================
+# 插件的挂载声明。DSH 启动时按 bundle 层栈叠加各插件 patch，本文件把下面
+# 这一行插入 profile 的配置树；行里的 config 就是插件配置的初始值。
+#
+# 安装（本地目录）：
+#   dsh plugin --profile desktop add link:.\dsh-next-turn
+#
+# 卸载：
+#   dsh plugin --profile desktop remove dsh-next-turn
+# ============================================================================
+
+- insert:
+    - id: dsh-next-turn
+      name: dsh-next-turn
+      config:
+        enabled: true
+        # 自动模式最多连续提交多少轮，到顶自动关闭（建议仍然保留，可手动 Tab）
+        maxAutoTurns: 12
+        # 单条建议的最大字符数，超出截断
+        maxSuggestionChars: 160
+        # 送给预测器的最近消息条数 / 每条最大字符数
+        maxInputMessages: 12
+        maxMessageChars: 600
+        # 一轮结束后先等这么久（毫秒）确认没有后续轮次，再调模型
+        settleMs: 600
+        # 单次预测请求的超时（毫秒）
+        timeoutMs: 10000
+        # 预测请求的输出上限：只要一句话，64 token 足够
+        maxOutputTokens: 64

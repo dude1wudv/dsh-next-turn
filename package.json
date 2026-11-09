@@ -1,0 +1,54 @@
+{
+  "name": "dsh-next-turn",
+  "version": "0.2.1",
+  "description": "DeepSeek Harness 插件：一轮完全结束后预测下一句提示词，以 ghost text 对齐显示在输入框内，Tab 填入、Esc 忽略；自动模式按轮次安全阀自动提交，形成自驱续跑循环。",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./package.json": "./package.json",
+    "./cordis.patch.yml": "./cordis.patch.yml"
+  },
+  "files": [
+    "lib",
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE"
+  ],
+  "dsh": {
+    "engines": {
+      "dsh": ">=0.2.1-rc.0 <0.3.0"
+    },
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-conversation"
+      ]
+    }
+  },
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "next-turn",
+    "suggestion",
+    "autocomplete",
+    "autopilot",
+    "ghost-text"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dude1wudv/dsh-next-turn.git"
+  },
+  "homepage": "https://github.com/dude1wudv/dsh-next-turn#readme",
+  "bugs": {
+    "url": "https://github.com/dude1wudv/dsh-next-turn/issues"
+  },
+  "author": "dude1wudv",
+  "license": "MIT"
+}
